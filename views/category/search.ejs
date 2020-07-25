@@ -1,0 +1,135 @@
+<% layout('layouts/boilerplate') -%>
+<div class="cate-container">
+    <div class="no-block"></div>
+    <div class="cate-left">
+        <div class="test">
+            <div class="cate-bar">
+                <p><span class="a">Trang chu</span> / <span class="b"><%= categori[0].name %></span></p>
+            </div>
+            <div class="cate-search">
+                <div class="cate-search-left">
+                    <p><%= categori[0].name %></p>
+                </div>
+                <div class="cate-search-right">
+                    <select class="selectt" name="" id="">
+                        <option value="">Giá cả</option>
+                        <option value="">Tăng dần</option>
+                        <option value="">Giảm dần</option>
+                    </select>
+                    <select class="selectt" name="" id="">
+                        <option value="">Thời gian</option>
+                        <option value="">Mới nhất</option>
+                        <option value="">Cũ nhất</option>
+                    </select>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <div class="cate-main">
+            <p>danh sach cac <%= categori[0].name%> o khu vuc <%= xa %>, <%= huyen %>, <%= tinh %></p>
+            <% posts.forEach(function(po) { %>
+                <div class="cate-content">    
+                    <div class="cate-content-top">
+                        <p><%= po.title %></p>
+                    </div>
+                    <div class="cate-content-mid">
+                        <div class="cate-cnt-mid-top">
+                            <img src="/images/hero2.jpg" alt="">
+                        </div>
+                        <div class="cate-cnt-mid-mid">
+                            <div class="cnt-top">
+                                <p>Địa chỉ:</p>
+                            </div>
+                            <div class="cnt-mid">
+                                <p class="cnt-mid-left">Diện tích:<span style="color:black"><%= po.status %></span></p>
+                                <p class="cnt-mid-mid">Vệ sinh:<span style="color: black;"> cvxc dvsdvsd</span></p>
+                                <p class="cnt-mid-right"><span style="color: black;"><%= moment(po.createdAt).fromNow() %></span></p>
+                            </div>
+                            <div class="cnt-bot">
+                                <p>Giá cả: <span style="color: red;"><%= String(po.price).replace(/(.)(?=(\d{3})+$)/g,'$1,') %> VND</span></p>
+                            </div>
+                            <div class="cnt-under">
+                                <a href="/posts/<%= po.id %>">Xem chi tiet</a>
+                                <a href="">Luu lai</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% }) %>
+            <div id="pagination-container"></div>
+        </div>
+    </div>
+    <div class="cate-right">
+        <div class="searchAdv">
+            <div class="search-box">
+                <div class="search-title">
+                    <p>Tìm kiếm nâng cao</p>
+                </div>
+                <form action="/category/search/" method="GET">
+                    <div>
+                        <select name="tinh" id="tinh" size="1" required class="select-form">
+                            <option value="" selected="selected">Chọn tỉnh, thành phố</option>
+                        </select>
+                        <select name="huyen" id="huyen" size="1" required class="select-form">
+                            <option value="" selected="selected">Chọn Quận, Huyện</option>
+                        </select>
+                        <select name="xa" id="xa" size="1" required class="select-form">
+                            <option value="" selected="selected">Chọn Phường, Xã</option>
+                        </select>
+                    </div>
+                    <div>
+                        <select name="cate" id="" class="select-form">
+                            <option value="">Chọn loại phòng</option>
+                            <option value="phòng trọ">Phong tro</option>
+                            <option value="nhà nguyên căn">Nhà nguyên căn</option>
+                        </select>
+                    </div>
+                    <div class="search-price">
+                        <p>Chọn khoảng giá</p>
+                        <div>
+                            <input type="text" class="js-range-slider" value="" />
+                        </div>
+                        <div>
+                            <div style="float: left;width: 35%;">
+                                <input type="text" name="min" class="js-input-from" value="0" style="float: left;width: 50%;text-align: center;"/>
+                                <input type="text" value="Triệu" disabled style="float: left;width: 50%;">
+                            </div>
+                            <div style="float: left;margin-left: 9%;font-weight: bold;">
+                                <p>Đến</p>
+                            </div>
+                            <div style="float: right;width: 35%;">
+                                <input type="text" name="max" class="js-input-to" value="0" style="float: left;width: 50%;text-align: center;"/>
+                                <input type="text" value="Triệu" disabled style="float: left;width: 50%;">
+                            </div>
+                          </div>
+                    </div>
+                    <div class="search-submit">
+                        <button type="submit">Tìm kiếm</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    const queryString = window.location.search;
+    console.log(queryString);
+    const urlParams = new URLSearchParams(queryString);
+    console.log(urlParams);
+    const tinh = urlParams.get('tinh')
+    console.log(tinh);
+    const huyen = urlParams.get('huyen')
+    console.log(huyen);
+    const xa = urlParams.get('xa')
+    console.log(xa);
+    const category = urlParams.get('cate')
+    console.log(category);
+    const min = urlParams.get('min')
+    console.log(min);
+    const max = urlParams.get('max')
+    console.log(max);
+    const test = document.getElementById('test');
+    test.value = max;
+
+    document.getElementsById('categoryname').innerHTML = category;
+</script>

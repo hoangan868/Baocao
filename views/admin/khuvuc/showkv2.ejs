@@ -1,0 +1,14 @@
+<h1>dsjsdjsdnvs</h1>
+<div><%= kv.id %></div>
+<div><%= kv.name %></div>
+<div><%= kv.status %></div>
+<div><%= kv.school %> trường</div>
+<div><%= kv.kv3 %> phường</div>
+<div><%= kv.adress %> đường</div>
+<div><%= kv.fathername %></div>
+<div><a href="/admin/khuvuc/<%= kv.id %>/edit">Edit</a></div>
+<div>
+<form action="/admin/khuvuc/<%= kv.id %>?_method=DELETE" method="POST">
+    <input type="submit" value="Delete">
+</form>
+</div>

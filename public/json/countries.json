@@ -1,0 +1,58 @@
+[
+    {
+        "test":"ok"
+    },
+    {
+        "id":"1",
+        "name":"Hồ Chí Minh",
+        "parent_id":"0"
+    },
+    {
+        "id":"2",
+        "name":"Hà Nội",
+        "parent_id":"0"
+    },
+    {
+        "id":"3",
+        "name":"Bình Dương",
+        "parent_id":"0"
+    },
+    {
+        "id":"4",
+        "name":"Đồng Nai",
+        "parent_id":"0"
+    },
+    
+    {
+        "id":"5",
+        "name":"Quận 1",
+        "parent_id":"1"
+    },
+    {
+        "id":"6",
+        "name":"Quận 2",
+        "parent_id":"1"
+    },
+    
+    {
+        "id":"7",
+        "name":"Cầu Ông Lãnh",
+        "parent_id":"5"
+    },
+    {
+        "id":"8",
+        "name":"Bến Nghé",
+        "parent_id":"6"
+    },
+    {
+        "id":"9",
+        "name":"tây bắc",
+        "parent_id":"2"
+    },
+    {
+        "id":"10",
+        "name":"Lào cai",
+        "parent_id":"9"
+    }
+
+]

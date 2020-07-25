@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title><%= title %></title>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.js"></script>
+	<link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css" rel="stylesheet" />
+	<link rel="stylesheet" href="/stylesheets/style.css">
+	<link rel="stylesheet" href="/stylesheets/category.css">
+	<link rel="stylesheet" href="/stylesheets/navbar.css">
+	<link rel="stylesheet" href="/stylesheets/post-detail.css">
+	<link rel="stylesheet" href="/stylesheets/post-show.css">
+	<link rel="stylesheet" href="/stylesheets/user.css">
+	<!-- <link rel="stylesheet" href="/stylesheets/slideshow.css"> -->
+	<link rel="stylesheet" href="/stylesheets/starability-basic.min.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+	<script
+	  src="https://code.jquery.com/jquery-3.3.1.min.js"
+	  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	  crossorigin="anonymous"></script>
+</head>
+<body>
+	<% include ../partials/navbar %>
+	<% include ../partials/flash-messages %>
+	<%- body -%>
+	<script>
+		var post = <%- JSON.stringify(post) %>;
+		var mapBoxToken = "<%= mapBoxToken %>";
+	</script>
+	<script src="/javascripts/post-show.js"></script>
+	<!-- <script src="/javascripts/slideshowthumb.js"></script> -->
+	<script>
+		function currentDiv(n) {
+  			showDivs(slideIndex = n);
+		}
+
+		function showDivs(n) {
+			var i;
+			var x = document.getElementsByClassName("mySlides");
+			var dots = document.getElementsByClassName("demo");
+			if (n > x.length) {slideIndex = 1}
+			if (n < 1) {slideIndex = x.length}
+			for (i = 0; i < x.length; i++) {
+				x[i].style.display = "none";
+			}
+			for (i = 0; i < dots.length; i++) {
+				dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
+			}
+			x[slideIndex-1].style.display = "block";
+			dots[slideIndex-1].className += " w3-opacity-off";
+		}
+	</script>
+	<!-- <script>
+		// 
+		
+		jQuery(document).ready(function ($) {
+			
+			// creating a container variable to hold the 'UL' element. It uses method chaining.
+			var container=$('div.slider')
+										.css('overflow','hidden')
+										.children('ul');
+			
+			// creating pagination variable which holds the 'UL' element.
+			var pagicontainer=$('div.pagi-container').children('ul');
+			
+			/* 
+			On the event of mouse-hover, 
+				i) Change the visibility of Button Controls.
+				ii) SET/RESET the "intv" variable to switch between AutoSlider and Stop mode.
+			*/
+			$('.gallery').hover(function( e ){
+				$('.slider-nav').toggle();
+				return e.type=='mouseenter'?clearInterval(intv):autoSlider();
+			});
+			
+			// Creating the 'slider' instance which will set initial parameters for the Slider.
+			var sliderobj= new slider(container,pagicontainer,$('.slider-nav'));
+			/*
+			This will trigger the 'setCurrentPos' and 'transition' methods on click of any button
+			 "data-dir" attribute associated with the button will determine the direction of sliding.
+			*/
+			sliderobj.nav.find('button').on('click', function(){
+				sliderobj.setCurrentPos($(this).data('dir'));
+				sliderobj.transition();
+			});
+			
+			/*
+			This will trigger the 'setCurrentPos' and 'transition' methods on click of any Pagination Thumbnail icon.
+			 "data-pgno" attribute associated with the Thumbnail icons will determine the value of 'current' variable.
+			*/
+			sliderobj.pagicontainer.find('li a').on('click', function(){
+				sliderobj.setCurrentPos($(this).data('pgno'));
+				sliderobj.transition();					
+			});
+			
+			autoSlider(); // Calling autoSlider() method on Page Load.
+			
+			/* 
+			This function will initialize the interval variable which will cause execution of the inner function after every 3 seconds automatically.
+			*/
+			function autoSlider()
+			{
+				return intv = setInterval(function(){
+					sliderobj.setCurrentPos('next');
+					sliderobj.transition();
+				}, 3000);
+			}
+			
+		});
+	</script> -->
+</body>
+</html>

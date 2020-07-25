@@ -1,0 +1,54 @@
+<% layout('layouts/boilerplate') -%>
+
+<!-- <form action="/register" method="POST" enctype="multipart/form-data">
+	<div>
+		<label for="username">Username:</label>
+		<input type="text" id="username" name="username" placeholder="username" value="<%= username %>" required>
+	</div>
+	<div>
+		<label for="password">Password:</label>
+		<input type="password" id="password" name="password" placeholder="password" required>
+	</div>
+	<div>
+		<label for="email">Email:</label>
+		<input type="email" id="email" name="email" placeholder="email" value="<%= email %>" required>
+	</div>
+	<div>
+		<label for="image">Image:</label>
+		<input type="file" id="image" name="image">
+	</div>
+
+	<input type="submit">
+</form> -->
+<div class="bg-img">
+	<div class="content">
+	  <header>Đăng ký thành viên</header>
+	  <form action="/register" method="POST" enctype="multipart/form-data">
+		<div class="field">
+		  <span class="fa fa-user"></span>
+		  <input type="text" required placeholder="Tên tài khoản" id="username" name="username">
+		</div>
+		<div class="field space">
+		  <span class="fa fa-lock"></span>
+		  <input type="password" class="pass-key" required placeholder="mật khẩu" id="password" name="password">
+		  <span class="show">Hiện</span>
+		</div>
+		<div class="field space">
+			<span class="fa fa-home"></span>
+			<input type="email" required placeholder="email" id="email" name="email">
+		</div>
+		<div class="field space">
+			<span class="fa fa-image"></span>
+			<input type="file" id="image" name="image">
+		</div>
+		<input type="text" id="role" name="role" value="user" hidden>
+		<div class="field space">
+		  <input type="submit" value="Đăng ký">
+		</div>
+	  </form>
+	  <div class="signup">
+		<a href="/login">Đăng nhập ngay</a>
+	  </div>
+	</div>
+  </div>
+  <script src="/javascripts/loginShowPassword.js"></script>

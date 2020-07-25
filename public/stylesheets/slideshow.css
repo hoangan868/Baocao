@@ -1,0 +1,139 @@
+/* ============================== This is for Overall Styling of the Content Gallery. */
+.gallery-container
+{
+	margin:10px auto;
+	padding:0px;
+	display:table;
+}
+
+.gallery
+{
+	width:640px;
+	height:370px;
+	background:#999;
+	/*border:2px solid green;*/
+}
+
+.gallery h2
+{
+	font-size: 20px;
+	background: #C5BBBB;	
+}
+
+.slider
+{
+	overflow:scroll;
+}
+.slider ul
+{
+	width:100000px;
+	list-style:none;
+	margin-left:0px;
+}
+.slider li
+{
+	float:left;
+}
+
+/* ============================== This is for Navigation Buttons Styling. */
+.slider-nav
+{
+	display:none; /* This is important to hide the buttons if jQuery is Not supported. */
+	margin-top: -10em;
+	cursor: pointer;
+}
+
+.backbtn
+{
+	position:relative;
+	opacity:0.5;
+}
+
+.nextbtn
+{
+	position:relative;
+	opacity:0.5;
+}
+
+/* ============================== This is for Pagination Styling. */
+.slider-pagi
+{
+	/*border:2px solid red;*/
+	text-align:center; /* Important : Keeps the Pagination in the center. */
+	width:640px;
+}
+
+.pagi-container
+{
+	/*border: 2px solid cyan;*/
+	padding: 5px;
+	display: inline-block;  /* This is a good alternative for inline-flex and supports most of the browsers. */
+	/* display: inline-flex; */ /* This is important to remove the extra vertical spaces  between 'UL' and 'pagi-container' */
+}
+
+.pagi-container > ul
+{
+	padding:2px;
+	/*border:1px solid black;*/
+	display: inline-block;	
+}
+
+.pagi-container > ul li
+{
+	/* float:left; */ /* Instead write "display:inline-block" Property to set the pagi-elements in center. */
+	list-style:none;
+	padding:0px; /* Setting padding as zero will increase clickable region of child('a' Anchor Element) of LI element */
+	border:1px solid #aaa;
+	margin: 0px auto;
+	margin-bottom:5px;
+	display:inline-block;
+	background: radial-gradient(rgba(255, 255, 255, 0.8) 50%, rgba(180,180,180,0.8));		
+}
+
+.pagi-container > ul li:hover
+{
+	background: radial-gradient(rgba(220, 220, 220, 0.3), rgba(180,180,180,0.8) 95%);
+}
+
+.pagi-container > ul li a
+{
+	display:inline-block;
+	padding:5px; /* This is important to Increase the Clickable Region of the anchor Elements */
+	text-decoration:none;
+	color:rgb(100,100,100);	
+	/* display:inline-flex; */
+}
+
+.pagi-container > ul li a img:hover
+{
+	opacity:1.0;
+}
+
+.img-normal
+{
+	opacity:0.5;
+	vertical-align:bottom; /* Very Important to Vertically Centre the Thumbnail and removing the bottom space between and Image and the container Anchor Tag. */
+}
+
+.img-selected
+{
+	opacity:1.0;
+}
+
+.pagi-selected
+{
+	/*box-shadow*/
+	-webkit-box-shadow:0 0 15px #000;
+	-moz-box-shadow:0 0 15px #000;
+	box-shadow:0 0 15px #000;
+	opacity:1.0;
+}
+
+
+/* ============================== This is for Styling Each of the Content Slides */
+.slides
+{
+	width:640px; /* This width is reduced to compensate the padding on left and right */
+	height:345px; /* This height is reduced to compensate the padding on top and bottom */	
+	background-color:rgb(198,185,221);		
+}

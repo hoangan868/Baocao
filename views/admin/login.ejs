@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+	<div class="bg-img-admin">
+		<div class="content">
+		  <header>Login Dashboard</header>
+		  <form action="/admin" method="POST">
+			<div class="field">
+			  <span class="fa fa-user"></span>
+			  <input type="text" required placeholder="username" id="username" name="username">
+			</div>
+			<div class="field space">
+			  <span class="fa fa-lock"></span>
+			  <input type="password" class="pass-key" required placeholder="password" id="password" name="password">
+			  <span class="show">SHOW</span>
+			</div>
+			<div class="pass">
+			  <a href="#">Forgot Password?</a>
+			</div>
+			<div class="field">
+			  <input type="submit" value="LOGIN">
+			</div>
+		  </form>
+		</div>
+	  </div>
+	  <% include ../partials/flash-messages %>
+	  <script src="/javascripts/loginShowPassword.js"></script>
+</body>
+</html>

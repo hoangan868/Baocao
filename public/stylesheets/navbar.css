@@ -1,0 +1,269 @@
+
+.nav {
+	height: 100px;
+	left: 0;
+	right: 0;
+	position: fixed;
+	text-align: center;
+	top: 0;
+	z-index: 99;
+}
+.nav .nav-top{
+    height: 65%;
+    width: 100%;
+    background-color: white;
+}
+.nav .nav-top .left{
+    float: left;
+    width: 40%;
+    height: 100%;
+    /* background: url('/images/logo.png') no-repeat center center; */
+}
+.nav .nav-top .left a img{
+    display: block;
+    margin: auto;
+    height: 100%;
+    padding: 10px;
+}
+.nav .nav-top .right{
+    float: right;
+    width: 60%;
+    height: 100%;
+}
+.nav .nav-top .right .newpost-link{
+    display: block;
+    margin-top: 8px;
+    border: 2px solid #0e913a;
+    float: left;
+    width: 25%;
+    margin-left: 20%;
+    margin-right: 5%;
+}
+.nav .nav-top .right .newpost-link a:hover{
+    background-color: #33cc66;
+    color: white;
+}
+.nav .nav-top .right .newpost-link a{
+    color: #4cd279;
+    font-size: 20px;
+    font-weight: 600;
+    display: block;
+    padding: 10px 0;
+}
+.nav .nav-top .right .avatar{
+    display: block;
+    width: 10%;
+    float: left;
+    height: 100%;
+    margin-right: 2%;
+}
+.nav .nav-top .right .avatar a img{
+    border-radius: 50%;
+    padding: 5px;
+}
+.nav .nav-top .right .option-link{
+    float: left;
+    width: 25%;
+    display: block;
+}
+.nav .nav-top .right .option-link .name-user{
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 5px;
+    display: flex;
+    color: black;
+}
+.nav .nav-top .right .option-link .btn-hover{
+    font-weight: 500;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    color: black;
+} 
+.nav .nav-top .right .option-link .info-user{
+    position: relative;
+    display: flexbox;
+}
+.nav .nav-top .right .option-link .option-user-link{
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    text-align: left;
+}
+.nav .nav-top .right .option-link .option-user-link a{
+    color: black;
+    padding: 5px 10px;
+    text-decoration: none;
+    display: block;
+} 
+.nav .nav-top .right .option-link .option-user-link a:hover{
+    background-color: #f1f1f1
+}  
+.nav .nav-top .right .option-link .info-user:hover .option-user-link{
+    display: block;
+}
+
+.nav .nav-under{
+    height: 35%;
+    width: 100%;
+    background-color: black;
+}
+.nav-under ul li{
+    display: table-cell;
+    padding: 0 10px;
+    margin: 0 5px;
+}
+.nav-under ul li:hover{
+	font-weight: bold;
+}
+.nav-under ul li a{
+    position: relative;
+    color: black;
+    font-size: 17px;
+	padding: 5px 0;
+}
+.nav-under ul li a:before,
+.content-bar ul li p:before{
+    position: absolute;
+    content: '';
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 100%;
+    background: red;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform .4s linear;
+}
+.nav-under ul li a:hover:before,
+.content-bar ul li p:hover:before{
+    transform: scaleX(1);
+	transform-origin: left;
+}
+.nav-under ul{
+	float: left;
+	margin-left: 10%;
+}
+.nav-under ul li{
+	margin-right: 15px;
+	line-height: 37px;
+}
+.nav-under ul li a{
+	color: white;
+	text-transform: uppercase;
+}
+.nav-under ul li a li{
+	color: white;
+}
+label #btn,
+label #cancel{
+    color: black;
+    font-size: 30px;
+    float: left;
+    margin-left: 5px;
+    line-height: 50px;
+    cursor: pointer;
+    display: none;
+}
+#check{
+    display: none;
+}
+
+@media only screen and (max-width:1439px){
+    .nav-under ul li a{
+		font-size: 12px;
+	}
+}
+@media screen and ( max-width:1024px){
+	.nav-under ul li a{
+		font-size:10px;
+	}
+	.nav-top-right-left ul{
+		margin-right:0;
+	}
+	.nav-top-right-right .img-avatar{
+		margin-left: 0;
+    	width: 35%;
+	}
+	.nav-top-right-right ul{
+		width: 65%;
+		margin-right: 0;
+	}
+	.nav-under ul{
+		margin-left: 2%;
+    	margin-right: 0;
+	}
+}
+@media screen and (max-width: 768px){
+	.nav-top-left a img{
+		left:0;
+		top: 10px;
+	}
+	.nav-top-left{
+		width: 36%;
+	}
+	.nav-top-right{
+		width: 60%;
+	}
+	.nav-top-right-left ul{
+		width: 100%;
+	}
+	.nav-top-right-left ul li{
+		width:100%;
+	}
+	.nav-top-right-left ul li a{
+		font-size: 15px;
+	}
+	.nav-top-right .nav-top-right-right ul li a{
+		font-size: 12px;
+		font-weight: bold;
+	}
+    label #btn{
+		display: block;
+		color: white;
+		line-height: 30px;
+    }
+    .nav-under ul{
+        position: fixed;
+        width: 25%;
+        height: 50%;
+        background: rgba(3,169,244 ,.5);
+        top: 90px;
+        z-index: 10000;
+        left: -90%;
+        text-align: left;
+		transition: all .5s;
+		margin-left: 0;
+	}
+	
+    nav ul li{
+        display: block;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        line-height: 20px;
+        
+    }
+    nav ul li a{
+        font-size: 20px;
+    }
+    
+    #check:checked ~label #btn{
+        display: none;
+    }
+    #check:checked ~label #cancel{
+		display: block;
+		line-height: 30px;
+		color: white;
+	}
+	#check:checked ~ ul{
+        left:0;
+    }
+}
+@media screen and (max-width:530px){
+	.nav-top-right-left ul li a{
+		font-size: 10px;
+	}
+}

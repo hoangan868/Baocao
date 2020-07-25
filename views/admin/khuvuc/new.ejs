@@ -1,0 +1,9 @@
+<h1>newCate</h1>
+<form action="/admin/khuvuc/new" method="POST" enctype="multipart/form-data">
+    <label for="">Ten san pham</label>
+    <input type="text" name="reviewkv[name]" id="name">
+    <input type="text" name="reviewkv[slug]" id="slug" placeholder="phong-tro">
+    <input type="number" name="reviewkv[status]" id="status" value="1" hidden>
+    <input type="file" accept="images/*" name="images" multiple />
+    <input type="submit">
+</form>

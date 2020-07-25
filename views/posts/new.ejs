@@ -1,0 +1,185 @@
+<% layout('layouts/boilerplate') -%>
+<div class="ct-post">
+	<div class="testt"></div>
+	<% include ../partials/user-leftnav %>
+	<div class="right-main">
+		<div class="link-address">
+			<div class="cate-bar">
+				<p><span class="a">Trang chủ</span> / <span class="b">Đăng bài mới</span></p>
+			</div>
+		</div>
+		<form action="/posts" method="POST" enctype="multipart/form-data">
+			<div class="address">
+				<div>
+					<p class="nomal3-title">Địa chỉ cho thuê</p>
+				</div>
+				<div class="nomal3">
+					<label for="tinh">Tỉnh, thành phố</label><br>
+					<select name="tinh" id="tinh" size="1" class="select-nomal3">
+						<option value="" selected="selected">chọn tỉnh, tp</option>
+					</select>
+				</div>
+				<div class="nomal3">
+					<label for="huyen">Quận, Huyện</label><br>
+					<select name="huyen" id="huyen" size="1" class="select-nomal3">
+						<option value="" selected="selected">chọn quận, huyện</option>
+					</select>
+				</div>
+				<div class="nomal3">
+					<label for="xa">Phường, Xã</label><br>
+					<select name="xa" id="xa" size="1" class="select-nomal3">
+						<option value="" selected="selected">chọn phường, xã</option>
+					</select>
+				</div>
+				<div class="nomal4">
+					<label for="local">Số nhà</label>
+					<input type="text" name="post[homenum]" id="homeAddress">
+				</div>
+				<div class="nomal4">
+					<label for="post[adress]">Địa chỉ chính xác</label>
+					<input type="text" name="post[adress]" id="" class="value-city" style="width: 100%;background-color: bisque;" readonly>
+				</div>
+			</div>
+			<p>** Kéo icon trên bản đồ đến vị trí phòng trọ chủ bạn để có vị trí chính xác</p>
+			<div id="abc" class="map"></div>
+			<p class="info-post-title">Thông tin mô tả</p>
+			<hr>
+			<div>
+				<label for="post[cate]" style="font-size: 18px;font-weight: 600;">Loại chuyên mục</label><br>
+				<!-- <input type="text" name="" placeholder="loại" > -->
+				<select name="post[cate]" id="" style="width: 30%;border: 1px solid;border-radius: 5px;padding: 5px;">
+					<option value="">--Chọn loại chuyên mục--</option>
+					<option value="phòng trọ">Phòng trọ</option>
+					<option value="nhà nguyên căn">Nhà nguyên căn</option>
+					<option value="nhà mặt phố">Nhà mặt phố</option>
+					<option value="văn phòng">Văn phòng</option>
+					<option value="chung cư">Chung cư</option>
+				</select>
+			</div>
+			<div>
+				<label for="post[title]" style="font-size: 18px;margin-top: 20px;font-weight: 600;">Tiêu đề bài viết</label><br>
+				<input type="text" name="post[title]" placeholder="Title" style="width: 100%;border-radius: 5px;border: 1px solid black;line-height: 30px;">
+			</div>
+			<div>
+				<label for="post[description]" style="font-size: 18px;margin-top: 20px;font-weight: 600;">Nội dung mô tả</label><br>
+				<textarea name="post[description]" placeholder="Description" cols="" rows="10" style="width: 100%;"></textarea>
+			</div>
+			<div class="post-info-option">
+				<div class="post-info-option-left">
+					<label for="">Giá cho thuê</label><br>
+					<input type="number" name="post[price]" step="50000" placeholder="Price" min="100000" max="30000000" style="width: 50%;border: 1px solid;border-radius: 5px;line-height: 30px;">
+				</div>
+				<div class="post-info-option-right">
+					<label for="">Tiện ích</label><br>
+					<select data-placeholder="Chọn loại tiện ích" style="width: 50%;border: 1px solid;border-radius: 5px;" multiple class="chosen-select" tabindex="8">
+						<option value=""></option>
+						<option value="Wifi">Wifi</option>
+						<option value="Gác">Gác</option>
+						<option value="Máy lạnh">Máy lạnh</option>
+						<option value="Bếp">Bếp</option>
+						<option value="Máy giặt">Máy giặt</option>
+						<option value="Thang máy">Thanh máy</option>
+						<option value="Camera 24/7">Camera 24/7</option>
+					</select>
+				</div>
+			</div>
+			<div style="clear: both;">
+				<div class="post-info-option-left">
+					<label for="">Diện tích (m<sup>2</sup>)</label><br>
+					<input type="number" name="post[dt]" step="1" placeholder="25" style="width: 50%;border: 1px solid;border-radius: 5px;line-height: 30px;">
+				</div>
+				<div class="post-info-option-right">
+					<label for="">Đối tượng cho thuê</label><br>
+					<select id="" name="post[sex]" style="width: 50%;border: 1px solid;border-radius: 5px;line-height: 30px;padding: 5px;">
+						<option value="Nam, Nữ">--Tất cả--</option>
+						<option value="Nam">Nam</option>
+						<option value="Nữ">Nữ</option>
+					</select>
+				</div>
+			</div>
+			<div style="clear: both;">
+				<div class="post-info-option-left">
+					<label for="">Số người ở tối đa</label><br>
+					<input type="number" name="post[people]" step="1" placeholder="2" style="width: 50%;border: 1px solid;border-radius: 5px;line-height: 30px;">
+				</div>
+				<div class="post-info-option-right">
+					<label for="">Vệ sinh</label><br>
+					<select id="" name="post[wc]" style="width: 50%;border: 1px solid;border-radius: 5px;line-height: 30px;padding: 5px;">
+						<option value="">chọn loại vệ sinh</option>
+						<option value="chung chủ">Chung chủ</option>
+						<option value="khép kín">Khép kín</option>
+					</select>
+				</div>
+			</div>
+			<div style="clear: both;">
+				<div class="post-info-option-left">
+					<label for="">Giá điện (/Kw)</label><br>
+					<input type="number" name="post[electricPrice]" step="1" placeholder="2,500" style="width: 50%;border: 1px solid;border-radius: 5px;line-height: 30px;">
+				</div>
+				<div class="post-info-option-right">
+					<label for="">Giá nước (/Khối)</label><br>
+					<input type="number" name="post[waterPrice]" step="1" placeholder="10,000" style="width: 50%;border: 1px solid;border-radius: 5px;line-height: 30px;">
+				</div>
+			</div>
+			<div style="clear: both;margin-top: 20px;">
+				<input type="file" accept="images/*" name="images" multiple />
+			</div>
+			<input type="number" name="post[avgRating]" value="0" hidden>
+			<input type="number" name="post[status]" value="0" hidden>
+			<input type="text" class="value" name="post[utils]" hidden/>
+			<pre id="coordinates" class="coordinates" hidden></pre>
+			<!-- <input type="text" name="long" class="long" value="" >
+			<input type="number" name="lat" class="lat" value="" > -->
+			<div>
+				<input type="text" name="post[city]" id="provice" hidden>
+				<input type="text" name="post[provice]" id="h" hidden>
+				<input type="text" name="post[state]" id="x" hidden>
+			</div>
+			<input type="submit">
+		</form>
+		
+	</div>
+</div>
+<div class="footer-end" style="background-color: #252525;color: #2e3339; height: 50px;margin-top: 20px;">
+	
+	<div style="clear: both;">
+		<p style="color: white;text-align: center;">Website đang hoạt động thử nghiệm.
+			© 2020 Nguyen Hoang An.</p>
+	</div>
+</div>
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoiaG9hbmdhbiIsImEiOiJjazVvNGh1cHgwZmM0M2htb2Y1OW9lN2dwIn0.JTOeb8mnmod3aH0WJp9pOA';
+	var map = new mapboxgl.Map({
+		container: 'abc', // container id
+		style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+		center: [106.6555,10.9367], // starting position [lng, lat]
+		zoom: 10.26 // starting zoom
+	});
+	map.addControl(
+		new MapboxGeocoder({
+		accessToken: mapboxgl.accessToken,
+		mapboxgl: mapboxgl
+		})
+	);
+	var marker = new mapboxgl.Marker({
+		draggable: true
+		})
+		.setLngLat([106.6555, 10.9367])
+		.addTo(map);
+ 
+	function onDragEnd() {
+		var lngLat = marker.getLngLat();
+		console.log(lngLat);
+		coordinates.innerHTML =
+		'<input name="long" type="number" value="'+lngLat.lng+'"></input><br /><input name="lat" type="number" value="'+lngLat.lat+'"></input>';
+
+		
+	}
+	marker.on('dragend', onDragEnd);
+	map.addControl(new mapboxgl.FullscreenControl());
+	map.addControl(new mapboxgl.NavigationControl());
+
+</script>
+
+
+

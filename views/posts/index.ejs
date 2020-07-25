@@ -1,0 +1,64 @@
+<% layout('layouts/boilerplate') -%>
+<div class="nav-search">
+	<form action="">
+		<h1>fdsnfjnsdjkf</h1>
+	</form>
+		
+	
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-4">
+			<% include ../partials/searchFilter %>
+		</div>
+		<div class="col-8">
+			<div id="map"></div>
+		</div>
+	</div>
+</div>
+
+<% include ../partials/paginatePosts %>
+<% var i = 0 %>
+<% posts.docs.forEach(function(post) { %>
+<% i++ %>
+	<div>
+		<h2><%= post.title %></h2>
+		<div>Price: <%= post.price %></div>
+		<div><%= post.description %></div>
+		<div><%= post.location %></div>
+		<div><a href="/posts/<%= post.id %>">View more</a></div>
+	</div>
+
+<% }); %>
+
+<% include ../partials/paginatePosts %>
+<%= i %>
+<script>
+	mapboxgl.accessToken = "<%= mapBoxToken %>";
+	var posts = { features: <%- JSON.stringify(posts.docs) %> };
+</script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<!-- <script src="/javascripts/custom.js"></script> -->
+<script src="/javascripts/allPostsClusterMap.js"></script>
+<script>
+	function randomn(){
+		var a = document.getElementById('input').value;
+		if(a==="TP.HCM"){
+			var arr = ["Quận 1","Quận 2"];
+		}else if(a==="Bình Dương"){
+			var arr = ["Thủ Dầu Một","Thuận An"];
+		}else if(a==="Đồng Nai"){
+			var arr = ["Biên Hòa","2"];
+		}else{
+			var arr = [];
+		}
+		var string = "";
+		for (i =0;i<arr.length;i++){
+			string += "<option value='"+ arr[i] +"'>" + arr[i] + "</option>";
+		}
+		string = "<select name='huyen'>" + string + "</select>";
+		document.getElementById("output").innerHTML = string;
+	}
+</script>

@@ -1,0 +1,36 @@
+<% layout('layouts/boilerplate') -%>
+<header class="intro" style="height: auto;margin-top: 100px;">
+    <div style="height: 30px;width: 100%;background: #f1f4f6;">
+        <p style="margin-left: 13%;margin-bottom: 0;text-align: start;line-height: 30px;">
+            <a href="/" style="color: #5a646e;font-weight: 400;">South</a> > 
+            <a href="/review-khu-vuc" style="color: #5a646e; font-weight: 400;">Review khu vực</a> > 
+            <a href="/review-khu-vuc/<%= rekv[0].slug %>" style="color: #5a646e; font-weight: 400;"><%= rekv2[0].fathername %></a> > 
+            <span style="color: #5a646e; font-weight: bold;"><%= rekv2[0].name %></span>
+        </p>
+    </div>
+</header>
+<div class="content-center" style="width: 50%;margin:0 25%;">
+    <p style="text-align: left;font-size: 26px;font-weight: 700;margin-bottom: 0;"> Review khu vực <%= rekv2[0].name %></p>
+    <p><span style="font-weight: 700;"><%= rekv2[0].adress %></span> đường |
+    <span><span style="font-weight: 700;"><%= rekv2[0].kv3 %></span> phường |</span>
+    <span><span style="font-weight: 700;"><%= rekv2[0].school %></span> trường</span>
+    </p>
+    <a href="<%=rekv2[0].slug %>/cho-thue" style="margin-bottom: 1rem;background: #0499a8;width: 240px;padding: 8px 0;text-align: center;display: block;/* float: left; */border-radius: 8px;font-size: 16px;line-height: 1.5;color: #fff;"><%= post.length %> tin cho thuê --></a>
+    <p>
+        Quận 1 hay Quận Nhất là quận nội thành trực thuộc thành phố Hồ Chí Minh. Được xem là quận trung tâm nên địa bàn quận tập trung nhiều cơ quan chính quyền, lãnh sự quán của các quốc gia và nhiều toà cao ốc. Không những vậy, đây là nơi sầm uất, vui chơi giải trí, có mức sống cao nhất của thành phố và gắn liền nhiều công trình kiến trúc nổi bật trong quá trình lịch sử.
+    </p>
+    <p style="text-align: left;font-size: 23px;font-weight: 700;">Chi tiết các khu vực trong <%= rekv2[0].name %></p>
+    <div style="width: 100%;height: 150px;">
+        <% rekv3.forEach(function(re){ %>
+            <div style="float:left;width: 33%;height: 100%;margin: 1px;position: relative;padding: 5px;">
+            <a href="<%= re.slug %>">
+                <img src="<%= re.url %>" alt="" width="100%" height="100%" style="border-radius:10px">
+                <div style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);color: white;font-size: 20px;font-weight: bold;"><%= re.name %></div>
+            </a>
+            </div>
+        <% }); %>
+</div>
+</div>
+<div class="footer-end">
+			
+</div>

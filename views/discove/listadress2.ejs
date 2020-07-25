@@ -1,0 +1,27 @@
+<% layout('layouts/boilerplate') -%>
+<header class="intro" style="height: auto;margin-top: 100px;">
+    <div style="height: 30px;width: 100%;background: #f1f4f6;">
+        <p style="margin-left: 13%;margin-bottom: 0;text-align: start;line-height: 30px;">
+            <a href="/" style="color: #5a646e;font-weight: 400;">South</a> > 
+            <a href="/review-khu-vuc" style="color: #5a646e; font-weight: 400;">Review khu vực</a> > 
+            <span style="color: #5a646e; font-weight: bold;"><%= rvkv[0].name %></span>
+        </p>
+    </div>
+</header>
+<div class="content-center" style="width: 60%;margin:0 20%;">
+    <p style="text-align: center;font-size: 25px;font-weight: 600"> Review khu vực <%= rvkv[0].name %></p>
+    <div style="width: 100%;height: 220px;">
+            <% rekv2.forEach(function(re){ %>
+                <div style="float:left;width: 33%;height: 100%;margin: 1px;position: relative;padding: 5px;">
+                <a href="<%= re.fathername %>/<%= re.slug %>">
+                    <img src="<%= re.url %>" alt="" width="100%" height="100%" style="border-radius:10px">
+                    <div style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);color: white;font-size: 20px;font-weight: bold;"><%= re.name %></div>
+                </a>
+                </div>
+            <% }); %>
+    </div>
+    
+</div>
+<div class="footer-end">
+			
+</div>

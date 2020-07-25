@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <!-- Include BS4 CDN for development -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/stylesheets/navbar.css">
+    <link rel="stylesheet" href="/stylesheets/category.css">
+    <link rel="stylesheet" href="/stylesheets/post-new.css">
+    <link rel="stylesheet" href="/stylesheets/select2.min.css">
+    <link rel="stylesheet" href="/stylesheets/price.css">
+    <link rel="stylesheet" href="/stylesheets/user.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="/stylesheets/profile.css"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.min.js"></script>
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.css" type="text/css"/>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.js'></script>
+    <link rel="stylesheet" href="/stylesheets/chosen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
+
+    
+    <style>
+      .geocoder {
+      position: absolute;
+      z-index: 1;
+      width: 50%;
+      left: 50%;
+      margin-left: -25%;
+      top: 10px;
+      }
+      .mapboxgl-ctrl-geocoder {
+      min-width: 100%;
+      }
+      #map {
+      margin-top: -10px;
+      }
+      #map { position: absolute; top: 111px; bottom: 0; width: 100%; }
+      .hident{
+        display: none;
+      }
+      .showss{
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+  	<% include ../partials/navbar %>
+    <%- body -%>
+    <% include ../partials/flash-messages %>
+    <% if (title === 'Posts Index') { %>
+    <script src="/javascripts/post-index.js"></script>
+    <% } %>
+    <!-- <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script> -->
+  <script src="/javascripts/price.js" type="text/javascript"></script>
+  <script src="/javascripts/chosen.jquery.js"></script>
+  <script src="/javascripts/select2.min.js"></script>
+  <script src="/javascripts/simplePagination.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
+  <script>
+    var items = $(".cate-content");
+    var numItems = items.length;
+    var perPage = 5;
+    items.slice(perPage).hide();
+    $('#pagination-container').pagination({
+        items: numItems,
+        itemsOnPage: perPage,
+        prevText: "&laquo;",
+        nextText: "&raquo;",
+        onPageClick: function (pageNumber) {
+            var showFrom = perPage * (pageNumber - 1);
+            var showTo = showFrom + perPage;
+            items.hide().slice(showFrom, showTo).show();
+        }
+    });
+  </script>
+  <script type="text/javascript"> 
+    $(document).ready( function() {
+      $('.msga').delay(5000).fadeOut();
+      $('select').serialize({
+        sortField: 'text'
+      });
+    });
+  </script>
+<script src="/javascripts/provice-city.js"></script>
+<script>
+	window.onload = function () {
+	var countySel = document.getElementById("tinh"),
+	stateSel = document.getElementById("huyen"),
+	districtSel = document.getElementById("xa");
+	for (var country in stateObject) {
+	countySel.options[countySel.options.length] = new Option(country, country);
+	}
+	countySel.onchange = function () {
+	stateSel.length = 1; // remove all options bar first
+	districtSel.length = 1; // remove all options bar first
+	if (this.selectedIndex < 1) return; // done
+	for (var state in stateObject[this.value]) {
+	stateSel.options[stateSel.options.length] = new Option(state, state);
+	}
+	}
+	countySel.onchange(); // reset in case page is reloaded
+	stateSel.onchange = function () {
+	districtSel.length = 1; // remove all options bar first
+	if (this.selectedIndex < 1) return; // done
+	var district = stateObject[countySel.value][this.value];
+	for (var i = 0; i < district.length; i++) {
+	districtSel.options[districtSel.options.length] = new Option(district[i], district[i]);
+	}
+	}
+	}
+	</script>
+<script>
+	$('.chosen-select').chosen().on('change', function() {
+    	values = $('.chosen-select').val();
+      $('.value').val(values);
+  });
+  $('#tinh').on('change', function(){
+    valuesTinh = $('#tinh').val();
+    $('#huyen').on('change',function(){
+      valueHuyen = $('#huyen').val();
+      $('#h').val(valueHuyen);
+      if(valueHuyen === ''){
+        $('.value-city').val(valuesTinh);
+      }else{
+        $('.value-city').val(valueHuyen+', '+valuesTinh);
+        $('#xa').on('change',function(){
+          valueXa = $('#xa').val();
+          $('#x').val(valueXa);
+          if(valueXa === ''){
+            $('.value-city').val(valueHuyen+', '+valuesTinh);
+          }else{
+            $('.value-city').val(valueXa+', '+valueHuyen+', '+valuesTinh);
+            $('#homeAddress').on('input',function(){
+              valueHome = $('#homeAddress').val();
+              $('.value-city').val(valueHome+', '+valueXa+', '+valueHuyen+', '+valuesTinh);
+            });
+          }
+        });
+      }
+    });
+    $('.value-city').val(valuesTinh);
+    $('#provice').val(valuesTinh);
+  });
+</script>
+<script>
+	$(document).ready(function() {
+		$("#birthday").datepicker({ dateFormat: 'dd/mm/yy' });
+	});
+</script>
+
+  </body>
+</html>
+
+
+
+
+
+
+

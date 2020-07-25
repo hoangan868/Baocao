@@ -1,0 +1,116 @@
+<% layout('layouts/boilerplate') -%>
+<div class="cate-container">
+    <div class="no-block"></div>
+    <div class="cate-left">
+        <div class="test">
+            <div class="cate-bar">
+                <p><span class="a">Trang chu</span> / <span class="a"><%= rekv2[0].fathername %></span> / <span class="a"><%= rekv2[0].name %></span> / <span class="b">Cho thuê</span></p>
+            </div>
+            <div class="cate-search">
+                <div class="cate-search-left">
+                    
+                </div>
+            </div>
+            <hr>
+        </div>
+        <div class="cate-main">
+            <% var i = 1 %>
+            <% posts.forEach(function(po) { %>
+            <div class="cate-content">    
+                <div class="cate-content-top">
+                    <p><%= po.title %></p>
+                </div>
+                <div class="cate-content-mid">
+                    <div class="cate-cnt-mid-top">
+                        <img src="/images/hero2.jpg" alt="">
+                    </div>
+                    <div class="cate-cnt-mid-mid">
+                        <div class="cnt-top">
+                            <p>Địa chỉ:</p>
+                        </div>
+                        <div class="cnt-mid">
+                            <p class="cnt-mid-left">Diện tích:<span style="color:black"><%= po.status %></span></p>
+                            <p class="cnt-mid-mid">Vệ sinh:<span style="color: black;"> cvxc dvsdvsd</span></p>
+                            <p class="cnt-mid-right"><span style="color: black;"><%= moment(po.createdAt).fromNow() %></span></p>
+                        </div>
+                        <div class="cnt-bot">
+                            <p>Giá cả: <span style="color: red;"><%= String(po.price).replace(/(.)(?=(\d{3})+$)/g,'$1,') %> VND %></span></p>
+                        </div>
+                        <div class="cnt-under">
+                            <a href="/posts/<%= po.id %>">Xem chi tiet</a>
+                            <a href="">Luu lai</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% }) %>
+            <div id="pagination-container"></div>
+        </div>
+    </div>
+    <div class="cate-right">
+        <div class="searchAdv">
+            <div class="search-box">
+                <div class="search-title">
+                    <p>Tìm kiếm nâng cao</p>
+                </div>
+                <form action="/category/search/" method="GET">
+                    <div>
+                        <select name="tinh" id="tinh" size="1" required class="select-form">
+                            <option value="" selected="selected">Chọn tỉnh, thành phố</option>
+                        </select>
+                        <select name="huyen" id="huyen" size="1"  class="select-form">
+                            <option value="" selected="selected">Chọn Quận, Huyện</option>
+                        </select>
+                        <select name="xa" id="xa" size="1"  class="select-form">
+                            <option value="" selected="selected">Chọn Phường, Xã</option>
+                        </select>
+                    </div>
+                    <div>
+                        <select name="cate" id="" class="select-form">
+                            <option value="">Chọn loại phòng</option>
+                            <option value="phòng trọ">Phong tro</option>
+                            <option value="nhà nguyên căn">Nhà nguyên căn</option>
+                            <option value="nhà mặt phố">Nhà mặt phố</option>
+                        </select>
+                    </div>
+                    <div class="search-price">
+                        <p>Chọn khoảng giá</p>
+                        <div>
+                            <input type="text" class="js-range-slider" value="" />
+                        </div>
+                        <div>
+                            <div style="float: left;width: 35%;">
+                                <input type="text" name="min" class="js-input-from" value="0" style="float: left;width: 50%;text-align: center;"/>
+                                <input type="text" value="Triệu" disabled style="float: left;width: 50%;">
+                            </div>
+                            <div style="float: left;margin-left: 9%;font-weight: bold;">
+                                <p>Đến</p>
+                            </div>
+                            <div style="float: right;width: 35%;">
+                                <input type="text" name="max" class="js-input-to" value="0" style="float: left;width: 50%;text-align: center;"/>
+                                <input type="text" value="Triệu" disabled style="float: left;width: 50%;">
+                            </div>
+                          </div>
+                    </div>
+                    <div class="search-submit">
+                        <button type="submit">Tìm kiếm</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var post = { features: <%- JSON.stringify(posts) %> };
+    console.log(post.features.length);
+    for(var i = 0 ; i < post.features.length ; i++){
+        if(post.features[i].title === 'test full view detail'){
+            var a = post.features[i];
+            console.log(a);
+        }
+        
+    }
+</script>
+
+

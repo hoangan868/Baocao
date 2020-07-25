@@ -1,0 +1,100 @@
+<% layout('layouts/boilerplate') -%>
+
+<div class="ct-post">
+	<% include ./partials/user-leftnav %>
+	<div class="right-main">
+		<div class="link-address">
+			<div class="cate-bar">
+				<p><span class="a">Trang chủ</span> / <span class="b">Quản lý</span> / <span class="b">Cập nhật thông tin cá nhân</span></p>
+			</div>
+		</div>
+	
+	<form action="/profile?_method=PUT" method="POST" enctype="multipart/form-data" style="margin: 20px 50px 0 50px;">
+		<div class="row">
+			<div class="col-25">
+			  <label for="fname">Họ tên</label>
+			</div>
+			<div class="col-75">
+			  <input type="text" id="fname" name="firstname" placeholder="Your name.." value="<%= currentUser.firstname %>">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-25">
+			  <label for="lname">Ngày sinh</label>
+			</div>
+			<div class="col-75">
+			  <input type="text" id="birthday" name="birthday" placeholder="birthday" value="<%= currentUser.birthday %>">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-25">
+			  <label for="lname">Số điện thoại</label>
+			</div>
+			<div class="col-75">
+			  <input type="text" id="phone" name="phone" placeholder="" value="<%= currentUser.phone %>">
+			</div>
+		</div>
+		<div class="row">
+				<div class="col-25">
+					<label for="country">Tỉnh/Thành phố</label>
+				</div>
+				<div class="col-75">
+					<select name="tinh" id="tinh" size="1" required class="select-form">
+						<option value="<%= currentUser.tinh %>" selected="selected"><%= currentUser.tinh %></option>
+					</select>
+				</div>
+				<div class="col-25">
+					<label for="country">Quận/Huyện</label>
+				</div>
+				<div class="col-75">	
+					<select name="huyen" id="huyen" size="1" required class="select-form">
+						<option value="<%= currentUser.huyen %>" selected="selected"><%= currentUser.huyen %></option>
+					</select>
+				</div>
+				<div class="col-25">
+					<label for="country">Phường/Xã</label>
+				</div>
+				<div class="col-75">
+					<select name="xa" id="xa" size="1" required class="select-form">
+						<option value="<%= currentUser.xa %>" selected="selected"><%= currentUser.xa %></option>
+					</select>
+				</div>
+		</div>
+		<div class="row">
+			<div class="col-25">
+			  <label for="subject">Subject</label>
+			</div>
+			<div class="col-75">
+			  <textarea id="subject" name="desc" placeholder="Write something.." style="height:200px"><%= currentUser.desc %></textarea>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-25">
+			  <label for="subject">Avatar</label>
+			</div>
+			<div class="col-75">
+				<input type="file" id="image" name="image">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-25">
+			  <label for="subject">Mật khẩu</label>
+			</div>
+			<div class="col-75">
+				<input type="password" id="current-password" name="currentPassword" placeholder="current password" required>
+			</div>
+		</div>
+		  <div class="row">
+			<input type="submit" value="Submit" id="update-profile">
+		  </div> 	
+	</form>
+	</div>
+</div>
+
+
+<script src="/javascripts/profile.js"></script>
+
+
+
+
+

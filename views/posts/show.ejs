@@ -1,0 +1,296 @@
+<% layout('layouts/post-show-layout') -%>
+<div class="cate-container">
+    <div class="cate-left">
+        <div class="cate-bar">
+            <p><span class="a"><a href="">Trang chu</a></span> / <span class="a"><a href="/category/<%= cateid[0].id %>"><%= post.cate %></a></span> / <span class="b"><%= post.title %></span></p>
+        </div>
+        <hr>
+        <div class="cate-main">
+			<div class="detail-title">
+				<p><%= post.title %></p>
+			</div>
+			<div class="detail-view">
+				<div class="fb-share-like">share</div>
+				<div class="view"><%= post.view %> lượt xem</div>
+			</div>
+			<div class="detail-main">
+                <div class="main-left">
+                    <div class="main-content">
+                        <div class="cnt-1 br-r-top">
+                            <p>Địa chỉ</p>
+                        </div>
+                        <div class="cnt-2 br-b-title">
+                            <p><%= post.adress %></p>
+                        </div>
+                    </div>
+                    <div class="main-content">
+                        <div class="cnt-1">
+                            <p>Diện tích</p>
+                        </div>
+                        <div class="cnt-1-2">
+                            <p><%= post.dt %> m<sup>2</sup></p>
+                        </div>
+                        <div class="cnt-1">
+                            <p>Loại phòng</p>
+                        </div>
+                        <div class="cnt-1-2-1">
+                            <p><%= post.cate %></p>
+                        </div>
+                    </div>
+                    <div class="main-content">
+                        <div class="cnt-1">
+                            <p>Vệ sinh</p>
+                        </div>
+                        <div class="cnt-1-2">
+                            <p><%= post.wc %></p>
+                        </div>
+                        <div class="cnt-1">
+                            <p>Số người ở</p>
+                        </div>
+                        <div class="cnt-1-2-1">
+                            <p><%= post.people %></p>
+                        </div>
+                    </div>
+                    <div class="main-content">
+                        <div class="cnt-1">
+                            <p>Giá điện</p>
+                        </div>
+                        <div class="cnt-1-2">
+                            <p><%= post.electricPrice %> vnđ/Kw</p>
+                        </div>
+                        <div class="cnt-1">
+                            <p>Giá nước</p>
+                        </div>
+                        <div class="cnt-1-2-1">
+                            <p><%= post.waterPrice %> vnđ/khối</p>
+                        </div>
+                    </div>
+                    <div class="main-content">
+                        <div class="cnt-1 br-r-bot he-last-bot">
+                            <p>Tiện ích</p>
+                        </div>
+                        <div class="cnt-2">
+                            <p><%= post.utils %></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-right">
+                    <div class="main-content">
+                        <p class="title-top">Thông tin liên hệ</p>
+                    </div>
+                    <div class="main-content">
+                        <p class="cnt-right-p">
+                            <i class="fas fa-hand-holding-usd"></i>
+                            <span style="color: red; margin-left: 5px;"><%= String(post.price).replace(/(.)(?=(\d{3})+$)/g,'$1,') %> VND</span>
+                        </p>
+                    </div>
+                    <div class="main-content">
+                        <p class="cnt-right-p">
+                            <i class="fas fa-user-tie"></i>
+                            <span style="margin-left: 10px;"><%= userinfo.username %></span>
+                        </p>
+                    </div>
+                    <div class="main-content">
+                        <p class="cnt-right-p">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span style="margin-left: 15px;"><%= userinfo.phone %></span>
+                        </p>
+                    </div>
+                    <div class="main-content">
+                        <div class="link-le-ri-100 br-r">
+                            <a class="br-r-bot" href="">Liên hệ</a>
+                        </div>
+                        <div class="link-le-ri-100">
+                            <a class="br-r-bot-right" href="">Lưu tin</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="img-slideshow" style="margin-top: 20px;">
+                <div class="w3-content" style="clear: both;position: relative;">
+                    <div class="mySlides" style="height: 350px;overflow: hidden;border-radius: 10px;border: 2px solid black;">
+                        <% post.images.forEach(function(image) { %>
+                            <img src="<%= image.url %>" class="mySlides">
+                        <% }); %>
+                    </div>
+                    <a class="prev" onclick="plusSlides(-1)">❮</a>
+                    <a class="next" onclick="plusSlides(1)">❯</a>
+                    <div class="row">
+                        <div class="column">
+                            <% post.images.forEach(function(image) { %>
+                                
+                                <div class="w3-col s4">
+                                    <img  class="demo" src="<%= image.url %>" style="cursor:pointer;width: 100%;" onclick="currentSlide(i)">
+                                </div>
+                            <% }); %>
+                            
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <div class="detail-text">
+                <div>
+                    <p>Thông tin chi tiết ></p>
+                </div>
+                <hr>
+                <div class="text-main">
+                    <pre><%= post.description %></pre>
+                </div>
+            </div>
+            <div>
+                <div id="map"></div>
+                <pre id="coordinates" class="coordinates"></pre>
+            </div>
+        </div>
+    </div>
+    <div class="cate-right">
+        <div>
+            <p class="title-top">Phòng trọ mới nhất</p>
+            <hr style="margin: 5px;">
+            <% for(var i = 0 ; i < 3 ; i++ ){ %>
+                <div class="detail-right-img mySlides">
+                    <a href=""><img src="<%= postPlus[i].url %>" alt="" height="100%" width="100%"></a>
+                </div>
+                <div class="detail-right-info">
+                    <div class="top-info-title">
+                        <p style="font-size: 16px;margin-bottom: 0;">
+                            <% if(postPlus[i].title.length > 15){ %>
+                                <%= postPlus[i].title.substring(0, 15) %>...
+                            <% }else{ %> 
+                                <%= postPlus[i].title %>  
+                            <% } %>
+                        </p>
+                    </div>
+                    <div class="middle-info-price">
+                        <p style="font-size: 16px;">Giá:<%= String(postPlus[i].price).replace(/(.)(?=(\d{3})+$)/g,'$1,') %> VND</p>
+                    </div>
+                    <div class="under-info-address">
+                        <p>Địa chỉ:
+                            <% if(postPlus[i].adress.length > 10){ %>
+                                <%= postPlus[i].adress.substring(0, 10) %>...
+                            <% }else{ %> 
+                                <%= postPlus[i].adress %>  
+                            <% } %>
+                        </p>
+                    </div>
+                </div>
+                <hr style="margin: 5px;clear: both;">
+            <% } %>
+            
+        </div>   
+        <!-- <% if (currentUser && post.author.equals(currentUser._id)) { %>
+            <div>
+                <a href="/posts/<%= post.id %>/edit">
+                    <button>Edit</button>
+                </a>
+            </div>
+            <div>
+                <form action="/posts/<%= post.id %>?_method=DELETE" method="POST">
+                    <input type="submit" value="Delete">
+                </form>
+            </div>
+        <% } %>  -->
+        
+        <h3>Bình luận</h3>
+			<!-- display all reviews -->
+			<% post.reviews.forEach(function(review) { %>
+				<div>
+					<span style="color: red;"><%= review.author.username %></span>:<%= review.body %><br>
+					Đánh giá:<%= review.rating %> sao
+				</div>
+				<% if(currentUser && review.author.equals(currentUser._id)) { %>
+				<div>
+					<button class="toggle-edit-form">Edit</button>
+					<form action="/posts/<%= post.id %>/reviews/<%= review.id %>?_method=PUT" method="POST" class="edit-review-form">
+						<textarea name="review[body]" required><%= review.body %></textarea>
+						<fieldset class="starability-basic">
+						  <legend>Rating:</legend>
+						  <button class="clear-rating" type="button">Clear Rating</button>
+						  <input type="radio" id="edit-rate0" class="input-no-rate" name="review[rating]" value="0" checked aria-label="No rating." />
+						  <input type="radio" id="edit-rate1" name="review[rating]" value="1" />
+						  <label for="edit-rate1" title="Terrible">1 star</label>
+						  <input type="radio" id="edit-rate2" name="review[rating]" value="2" />
+						  <label for="edit-rate2" title="Not good">2 stars</label>
+						  <input type="radio" id="edit-rate3" name="review[rating]" value="3" />
+						  <label for="edit-rate3" title="Average">3 stars</label>
+						  <input type="radio" id="edit-rate4" name="review[rating]" value="4" />
+						  <label for="edit-rate4" title="Very good">4 stars</label>
+						  <input type="radio" id="edit-rate5" name="review[rating]" value="5" />
+						  <label for="edit-rate5" title="Amazing">5 stars</label>
+						</fieldset>
+						<input type="submit" value="Update">
+					</form>
+					
+					<script>
+						$('#edit-rate<%= review.rating %>').prop('checked', true);
+					</script>
+			
+					<form action="/posts/<%= post.id %>/reviews/<%= review.id %>?_method=DELETE" method="POST">
+						<input style="background-color: red;" type="submit" value="Delete">
+					</form>
+				</div>
+				<% } %>
+				<hr>
+            <% }); %>
+            <% if(currentUser) { %>
+                <h2>Thêm Bình luận</h2>
+                <form action="/posts/<%= post.id %>/reviews" method="POST">
+                    <textarea style="width: 100%;border: 1px solid #ccc;border-radius: 4px;resize: vertical;" name="review[body]" required></textarea>
+                    <fieldset class="starability-basic">
+                      <legend>Đánh giá:</legend>
+                      
+                      <input type="radio" id="rate0" class="input-no-rate" name="review[rating]" value="0" checked aria-label="No rating." />
+                      <input type="radio" id="rate1" name="review[rating]" value="1" />
+                      <label for="rate1" title="Terrible">1 star</label>
+                      <input type="radio" id="rate2" name="review[rating]" value="2" />
+                      <label for="rate2" title="Not good">2 stars</label>
+                      <input type="radio" id="rate3" name="review[rating]" value="3" />
+                      <label for="rate3" title="Average">3 stars</label>
+                      <input type="radio" id="rate4" name="review[rating]" value="4" />
+                      <label for="rate4" title="Very good">4 stars</label>
+                      <input type="radio" id="rate5" name="review[rating]" value="5" />
+                      <label for="rate5" title="Amazing">5 stars</label>
+                      <button class="clear-rating" type="button">Clear</button>
+                    </fieldset>
+                
+                    <input type="submit">
+                </form>
+                <% } else { %>
+                <h2><a href="/login?returnTo=true">Thêm bình luận</a></h2>
+                <% } %>
+
+    </div>
+</div>
+<div class="footer-end" style="background-color: #252525;color: #2e3339;">
+    <div style="float: left; width: 25%;">
+        <h4 style="color: #33cc66;">Thông tin liên hệ</h4>
+        <p style="color: white;">Tel: 0973192185</p>
+        <p style="color: white;">Email: support@gmail.com</p>
+    </div>
+    <div style="float: left;width: 25%;">
+        <h4 style="color: #33cc66;">Về chúng tôi</h4>
+        <p style="color: white;">Trang web đăng tin chia sẻ miễn phí thông tin về phòng trọ, nhà riêng, văn phòng nhằm giúp người thuê phòng và người cho thuê phòng tương tác với nhau không qua trung gian môi giới.</p>
+    </div>
+    <div style="float: left;width: 25%;">
+        <h4 style="color: #33cc66;">Hỗ trợ</h4>
+        <ul style="color: white;">
+            <li>Giới thiệu</li>
+            <li>Điều khoản</li>
+            <li>Quảng cáo</li>
+        </ul>
+    </div>
+    <div style="float: left;width: 25%;">
+        <h4 style="color: #33cc66;">Top từ khóa tìm kiếm</h4>
+        <p style="color: white;">Tìm phòng trọ, Tìm nhà trọ, Cho thuê nhà trọ, Cho thuê phòng trọ, Cho thuê nhà nguyên căn, Thuê nhà nguyên căn, Nhà cho thuê, Cho thuê chung cư mini, Tìm người ở ghép, Lịch âm</p>
+    </div>
+    <div style="clear: both;">
+        <p style="color: white;text-align: center;">Website đang hoạt động thử nghiệm.
+            © 2020 Nguyen Hoang An.</p>
+    </div>
+</div>
+<script>
+    document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
+</script>
+
+
+

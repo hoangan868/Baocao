@@ -1,0 +1,98 @@
+<!-- <nav>
+	<div class="nav-top">
+	<div class="nav-top-left">
+		<a href="/">
+			<img src="/images/logo.png" alt="">
+		</a>
+	</div>
+	<div class="nav-top-right">
+		<div class="nav-top-right-left">
+			<ul>
+				<li><a href="/posts/new">Dang tin mien phi</a></li>
+			</ul>
+		</div>
+		<div class="nav-top-right-right">
+			<div class="img-avatar" style="overflow: hidden;">
+				<img src="/images/avatar2.png" alt="" width="100%" height="100%" style="position: unset;width: 100%;">
+			</div>
+			<ul>
+				<% if(!currentUser) {%>
+					<li><a href="/login"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a></li>
+					<li><a href="/register"><i class="fas fa-sign-in-alt"></i> Đăng ký</a></li>
+				<% }else { %>
+					<li><a href="#"><i class="far fa-heart"></i></a></li>
+					<li><a href="#"><i class="far fa-bell"></i></a></li>
+					<li><a href="/posts/new"><i class="fas fa-file-signature"></i> Đăng bài</a></li>
+					<li><a href="/logout">Thoát</a></li>
+					Xin chào, <%= currentUser.username %>!
+				<% } %>	
+			</ul>
+		</div>
+	</div>
+	</div>
+	<div class="nav-under">
+		<input type="checkbox" id="check">
+		<label for="check">
+			<i class="fas fa-bars" id="btn"></i>
+			<i class="fas fa-times" id="cancel"></i>
+		</label>
+		<ul>
+			<% category.forEach(function(cate) { %>
+				<li><a href="/category/<%= cate.id %>"><%= cate.name %></a></li>
+			<% }) %>
+		</ul>
+	</div>
+</nav> -->
+<div class="nav">
+	<div class="nav-top">
+		<div class="left">
+			<a href="/">
+				<img src="/images/logo.png" alt="">
+			</a>
+		</div>
+		<div class="right">
+			<div class="newpost-link">
+				<a href="/posts/new">Đăng tin miễn phí</a>
+			</div>
+			<div class="avatar">
+				<% if(!currentUser) {%>
+					<a href="#">
+						<img src="/images/avatar2.png" alt="" width="100%" height="100%" style="position: unset;width: 100%;">
+					</a>
+				<% }else { %>
+				<a href="#">
+					<img src="<%= currentUser.image.secure_url %>" alt="" width="100%" height="100%" style="position: unset;width: 100%;">
+				</a>
+				<% } %>
+			</div>
+			<div class="option-link">
+				<% if(!currentUser) {%>
+				<a href="/login" class="name-user">Đăng nhập</a>
+				<a href="/register" class="name-user">Đăng ký</a>
+				<% }else { %>
+				<a href="/user" class="name-user"><%= currentUser.username %></a>
+				<div class="info-user">
+					<a href="#" class="btn-hover">Thong tin tai khoan</a>
+					<div class="option-user-link">
+						<a href="/profile">Trang ca nhan</a>
+						<a href="/user">Tin da dang</a>
+						<a href="/logout">Thoat</a>
+					</div>
+				</div>
+				<% } %>
+			</div>
+		</div>
+	</div>
+	<div class="nav-under">
+		<!-- <input type="checkbox" id="check">
+		<label for="check">
+			<i class="fas fa-bars" id="btn"></i>
+			<i class="fas fa-times" id="cancel"></i>
+		</label> -->
+		<ul>
+			<% category.forEach(function(cate) { %>
+				<li><a href="/category/<%= cate.id %>"><%= cate.name %></a></li>
+			<% }) %>
+		</ul>
+	</div>
+</div>

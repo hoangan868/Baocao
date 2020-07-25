@@ -1,0 +1,437 @@
+<% layout('layouts/boilerplate') -%>
+<header class="intro">
+	<div id="map"></div>
+</header>
+<div class="content-center">
+	<hr class="hr-text" data-content="Review khu vực">
+	<div class="img-review">
+		<div class="img-text-left">
+			<a href="review-khu-vuc/tphcm" class="text-left">Khám phá 154 khu vực ở</br> TPHCM</a>
+			<a href="#" class="text-bottom">Xem review</a>
+		</div>
+		<div class="img-text-right">
+			<a href="review-khu-vuc/binh-duong" class="text-left">Khám phá 30 khu vực ở</br> Bình Dương</a>
+			<a href="#" class="text-bottom">Xem review</a>				
+		</div>
+	</div>
+	<hr class="hr-text">
+	<div class="content-text">
+		<div class="content-text-left">
+			<div class="content-bar">
+				<div class="ctb-left">
+					<h3>TIN MỚI NHẤT</h3>
+				</div>
+				<div class="ctb-right" id="nav-text">
+					<ul>
+						<li><p id="cate1" class="a">Chung cư</p></li>
+						<li><p id="cate2" class="a">Văn phòng</a></li>
+						<li><p id="cate3" class="a">Nhà nguyên căn</p></li>
+						<li><p id="cate4" class="a">Nhà mat pho</p></li>
+						<li><p id="cate5" class="a">Phòng trọ</p></li>
+						<li><p id="cate6" class="a red-color">Tất cả</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="content-main">
+				<div class="3-text-content showss" id="show-all">
+					<% for(var po = 0; po < 9 ;po++) { %>
+					<div class="content-text-main">
+					<div class="text-top">
+						<img src="<%= postlimit[po].url %>" alt="">
+					</div>
+					<div class="text-mid">
+						<a href="/posts/<%= postlimit[po]._id %>"><p><%= postlimit[po].title %></p></a>
+					</div>
+					<div class="text-under">
+						<div class="under-left">
+							<p><i class="fa fa-home"></i><i> <%= postlimit[po].provice %>,<%= postlimit[po].city %></i></p>
+						</div>
+						<div class="under-mid">
+							<p><i class="fa fa-home"></i> <%= postlimit[po].cate %></p>
+						</div>
+						<div class="under-right">
+							<p><i class="fa fa-home"></i> <%= postlimit[po].dt %>m2</p>
+						</div>
+					</div>
+				</div>
+				<% } %>
+				</div>
+				<div class="3-text-content hident" id="show-cate1">
+					<% for(var po = 0; po < 9 ;po++) { %>
+						<% if(postlimit[po].cate === 'chung cư') { %>
+					<div class="content-text-main">
+					<div class="text-top">
+						<img src="/images/hero2.jpg" alt="">
+					</div>
+					<div class="text-mid">
+						<p><%= postlimit[po].title %></p>
+					</div>
+					<div class="text-under">
+						<div class="under-left">
+							<p><i class="fa fa-home"></i><%= postlimit[po].cate %></p>
+						</div>
+						<div class="under-mid">
+							<p><i class="fa fa-home"></i> Chung cư, căn hộ </p>
+						</div>
+						<div class="under-right">
+							<p><i class="fa fa-home"></i> 30m2</p>
+						</div>
+					</div>
+				</div>
+				<% } %>
+				<% } %>
+				</div>	
+				<div class="3-text-content hident" id="show-cate2">
+					<% postlimit.forEach(function(p) { %>
+						<% if(p.cate === 'văn phòng') { %>
+					<div class="content-text-main">
+					<div class="text-top">
+						<img src="/images/hero2.jpg" alt="">
+					</div>
+					<div class="text-mid">
+						<p><%= p.title %></p>
+					</div>
+					<div class="text-under">
+						<div class="under-left">
+							<p><i class="fa fa-home"></i><%= p.cate %></p>
+						</div>
+						<div class="under-mid">
+							<p><i class="fa fa-home"></i> Chung cư, căn hộ </p>
+						</div>
+						<div class="under-right">
+							<p><i class="fa fa-home"></i> 30m2</p>
+						</div>
+					</div>
+				</div>
+				<% } %>
+				<% }); %>
+				</div>
+				<div class="3-text-content hident" id="show-cate3">
+					<% for(var po = 0; po < 9 ;po++) { %>
+						<% if(postlimit[po].cate === 'nhà nguyên căn') { %>
+					<div class="content-text-main">
+					<div class="text-top">
+						<img src="/images/hero2.jpg" alt="">
+					</div>
+					<div class="text-mid">
+						<p><%= postlimit[po].title %></p>
+					</div>
+					<div class="text-under">
+						<div class="under-left">
+							<p><i class="fa fa-home"></i><%= postlimit[po].cate %></p>
+						</div>
+						<div class="under-mid">
+							<p><i class="fa fa-home"></i> Chung cư, căn hộ </p>
+						</div>
+						<div class="under-right">
+							<p><i class="fa fa-home"></i> 30m2</p>
+						</div>
+					</div>
+				</div>
+				<% } %>
+				<% } %>
+				</div>
+				<div class="3-text-content hident" id="show-cate4">
+					<% for(var po = 0; po < 9 ;po++) { %>
+						<% if(postlimit[po].cate === 'nhà mặt phố') { %>
+					<div class="content-text-main">
+					<div class="text-top">
+						<img src="/images/hero2.jpg" alt="">
+					</div>
+					<div class="text-mid">
+						<p><%= postlimit[po].title %></p>
+					</div>
+					<div class="text-under">
+						<div class="under-left">
+							<p><i class="fa fa-home"></i><%= postlimit[po].cate %></p>
+						</div>
+						<div class="under-mid">
+							<p><i class="fa fa-home"></i> Chung cư, căn hộ </p>
+						</div>
+						<div class="under-right">
+							<p><i class="fa fa-home"></i> 30m2</p>
+						</div>
+					</div>
+				</div>
+				<% } %>
+				<% } %>
+				</div>
+				<div class="3-text-content hident" id="show-cate5">
+					<% var i = 0 %>
+					<% for(var po = 0; po < postlimit.length ;po++) { %>
+						<% if(postlimit[po].cate === 'phòng trọ' && i < 9) { %>
+							<% i++ %>
+					<div class="content-text-main">
+					<div class="text-top">
+						<img src="/images/hero2.jpg" alt="">
+					</div>
+					<div class="text-mid">
+						<p><%= postlimit[po].title %></p>
+					</div>
+					<div class="text-under">
+						<div class="under-left">
+							<p><i class="fa fa-home"></i><%= postlimit[po].cate %></p>
+						</div>
+						<div class="under-mid">
+							<p><i class="fa fa-home"></i> Chung cư, căn hộ </p>
+						</div>
+						<div class="under-right">
+							<p><i class="fa fa-home"></i> 30m2</p>
+						</div>
+					</div>
+				</div>
+				<% } %>
+				<% } %>
+				</div>	
+			</div>
+		</div>
+		<div class="content-text-right" >
+			<img src="/images/hero4.jpg" alt="" width="100%" height="400px">
+			<img src="/images/ads-4-min.png" alt="">
+		</div>
+	</div>
+	<div class="content-text" style="margin-top: 30px;">
+		<div class="content-text-left">
+			<div class="content-bar">
+				<div class="ctb-left">
+					<h3>BÀI VIẾT LIÊN QUAN</h3>
+				</div>
+				<div class="ctb-right">
+					<a href="#">XEM THÊM <i class="fa fa-chevron-right"></i></a>
+				</div>
+			</div>
+			<div class="content-main">
+				<div class="baiviet-left">
+					<div class="baiviet-main">
+						<div class="bv-main-img">
+							<a href="#">
+								<img src="/images/hero1.jpg" alt="" width="100%" height="100%">
+							</a>
+						</div>
+						<div class="bv-main-title">
+							<a href="#">
+								<p style="margin-bottom: 0;">Ngôi nhà 46m² tuyệt đẹp có chi phí hoàn thiện 480 triệu đồng chàng trai 8x xây tặng vợ</p>
+							</a>
+						</div>
+						<div class="bv-main-desc">
+							<p style="margin-bottom: 0;">Ngôi nhà của Nguyễn Hoàng Hiệp tặng cho vợ sắp cưới không chỉ đẹp như nhà Tây mà tổng chi phí xây dựng, thiết kế, trang trí chỉ vỏn vẹn ở con số 480 triệu đồng.</p>
+						</div>
+					</div>
+					<div class="baiviet-sub">
+						<div class="bv-sub-img">
+							<a href="#">
+								<img src="/images/hero2.jpg" alt="" width="100%" height="100%">
+							</a>
+						</div>
+						<div class="bv-sub-title">
+							<a href="#">
+								<p>Ý tưởng kinh doanh nhà trọ, ngồi không mỗi tháng kiếm trăm triệu?</p>
+							</a>
+						</div>
+					</div>
+					<div class="baiviet-sub">
+						<div class="bv-sub-img">
+							<a href="#">
+								<img src="/images/hero2.jpg" alt="" width="100%" height="100%">
+							</a>
+						</div>
+						<div class="bv-sub-title">
+							<a href="#">
+								<p>Ý tưởng kinh doanh nhà trọ, ngồi không mỗi tháng kiếm trăm triệu?</p>
+							</a>
+						</div>
+					</div>
+					<div class="baiviet-sub">
+						<div class="bv-sub-img">
+							<a href="#">
+								<img src="/images/hero2.jpg" alt="" width="100%" height="100%">
+							</a>
+						</div>
+						<div class="bv-sub-title">
+							<a href="#">
+								<p>Ý tưởng kinh doanh nhà trọ, ngồi không mỗi tháng kiếm trăm triệu?</p>
+							</a>
+						</div>
+					</div>
+					
+				</div>
+				<div class="baiviet-right">
+					<div class="bv-sub-2">
+						<div class="bv-sub-2-img" style="clear: both;">
+							<a href="#">
+								<img src="/images/hero3.jpg" alt="" width="100%" height="100%">
+							</a>
+						</div>
+						<div class="bv-sub-2-title">
+							<a href="#">
+								<p>Phạm Hương mặc giản dị giao lưu cùng sinh viên</p>
+							</a>
+						</div>
+					</div>
+					<div class="bv-sub-2">
+						<div class="bv-sub-2-img" style="clear: both;">
+							<a href="#">
+								<img src="/images/hero3.jpg" alt="" width="100%" height="100%">
+							</a>
+						</div>
+						<div class="bv-sub-2-title">
+							<a href="#">
+								<p>Nhà báo bị đánh, sinh viên báo chí có lung lay?</p>
+							</a>
+						</div>
+					</div>
+					<div class="bv-sub-2">
+						<div class="bv-sub-2-img" style="clear: both;">
+							<a href="#">
+								<img src="/images/hero3.jpg" alt="" width="100%" height="100%">
+							</a>
+						</div>
+						<div class="bv-sub-2-title">
+							<a href="#">
+								<p>Nhà báo bị đánh, sinh viên báo chí có lung lay?</p>
+							</a>
+						</div>
+					</div>
+					<div class="bv-sub-2">
+						<div class="bv-sub-2-img" style="clear: both;">
+							<a href="#">
+								<img src="/images/hero3.jpg" alt="" width="100%" height="100%">
+							</a>
+						</div>
+						<div class="bv-sub-2-title">
+							<a href="#">
+								<p>Nhà báo bị đánh, sinh viên báo chí có lung lay?</p>
+							</a>
+						</div>
+					</div>
+					<div class="bv-sub-2">
+						<div class="bv-sub-2-img" style="clear: both;">
+							<a href="#">
+								<img src="/images/hero3.jpg" alt="" width="100%" height="100%">
+							</a>
+						</div>
+						<div class="bv-sub-2-title">
+							<a href="#">
+								<p>Nhà báo bị đánh, sinh viên báo chí có lung lay?</p>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="footer-end" style="background-color: #252525;color: #2e3339;">
+		<div style="float: left; width: 25%;">
+			<h4 style="color: #33cc66;">Thông tin liên hệ</h4>
+			<p style="color: white;">Tel: 0973192185</p>
+			<p style="color: white;">Email: support@gmail.com</p>
+		</div>
+		<div style="float: left;width: 25%;">
+			<h4 style="color: #33cc66;">Về chúng tôi</h4>
+			<p style="color: white;">Trang web đăng tin chia sẻ miễn phí thông tin về phòng trọ, nhà riêng, văn phòng nhằm giúp người thuê phòng và người cho thuê phòng tương tác với nhau không qua trung gian môi giới.</p>
+		</div>
+		<div style="float: left;width: 25%;">
+			<h4 style="color: #33cc66;">Hỗ trợ</h4>
+			<ul style="color: white;">
+				<li>Giới thiệu</li>
+				<li>Điều khoản</li>
+				<li>Quảng cáo</li>
+			</ul>
+		</div>
+		<div style="float: left;width: 25%;">
+			<h4 style="color: #33cc66;">Top từ khóa tìm kiếm</h4>
+			<p style="color: white;">Tìm phòng trọ, Tìm nhà trọ, Cho thuê nhà trọ, Cho thuê phòng trọ, Cho thuê nhà nguyên căn, Thuê nhà nguyên căn, Nhà cho thuê, Cho thuê chung cư mini, Tìm người ở ghép, Lịch âm</p>
+		</div>
+		<div style="clear: both;">
+			<p style="color: white;text-align: center;">Website đang hoạt động thử nghiệm.
+				© 2020 Nguyen Hoang An.</p>
+		</div>
+</div>
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script src="/javascripts/select-box.js"></script>
+<script src="/javascripts/slideshow.js"></script>
+
+<script>
+	mapboxgl.accessToken = "<%= mapBoxToken %>";
+	var posts = { features: <%- JSON.stringify(posts) %> };
+</script>
+<script src="/javascripts/allPostsClusterMap.js"></script>
+<script>
+	var cate1 = document.getElementById('cate1');
+	$(document).ready(function(){
+  		$("#cate1").click(function(){
+			$('#show-all').addClass('hident').removeClass('showss');
+			$('#show-cate1').addClass('showss').removeClass('hident');
+			$('#show-cate2').addClass('hident').removeClass('showss');
+			$('#show-cate3').addClass('hident').removeClass('showss');
+			$('#show-cate4').addClass('hident').removeClass('showss');
+			$('#show-cate5').addClass('hident').removeClass('showss');
+		  });
+		$('#cate2').click(function(){
+			$('#show-all').addClass('hident').removeClass('showss');
+			$('#show-cate1').addClass('hident').removeClass('showss');
+			$('#show-cate2').addClass('showss').removeClass('hident');
+			$('#show-cate3').addClass('hident').removeClass('showss');
+			$('#show-cate4').addClass('hident').removeClass('showss');
+			$('#show-cate5').addClass('hident').removeClass('showss');
+		});
+		$('#cate3').click(function(){
+			$('#show-all').addClass('hident').removeClass('showss');
+			$('#show-cate1').addClass('hident').removeClass('showss');
+			$('#show-cate2').addClass('hident').removeClass('showss');
+			$('#show-cate3').addClass('showss').removeClass('hident');
+			$('#show-cate4').addClass('hident').removeClass('showss');
+			$('#show-cate5').addClass('hident').removeClass('showss');
+		});
+		$('#cate4').click(function(){
+			$('#show-all').addClass('hident').removeClass('showss');
+			$('#show-cate1').addClass('hident').removeClass('showss');
+			$('#show-cate2').addClass('hident').removeClass('showss');
+			$('#show-cate3').addClass('hident').removeClass('showss');
+			$('#show-cate4').addClass('showss').removeClass('hident');
+			$('#show-cate5').addClass('hident').removeClass('showss');
+		});
+		$('#cate5').click(function(){
+			$('#show-all').addClass('hident').removeClass('showss');
+			$('#show-cate1').addClass('hident').removeClass('showss');
+			$('#show-cate2').addClass('hident').removeClass('showss');
+			$('#show-cate3').addClass('hident').removeClass('showss');
+			$('#show-cate4').addClass('hident').removeClass('showss');
+			$('#show-cate5').addClass('showss').removeClass('hident');
+		});
+		$('#cate6').click(function(){
+			$('#show-all').addClass('showss').removeClass('hident');
+			$('#show-cate1').addClass('hident').removeClass('showss');
+			$('#show-cate2').addClass('hident').removeClass('showss');
+			$('#show-cate3').addClass('hident').removeClass('showss');
+			$('#show-cate4').addClass('hident').removeClass('showss');
+			$('#show-cate5').addClass('hident').removeClass('showss');
+		});
+
+	});
+</script>
+<script>
+	var hea = document.getElementById("nav-text");
+	var cats = hea.getElementsByClassName("a");
+	for(var i = 0 ; i < cats.length; i++){
+		cats[i].addEventListener("click", function() {
+		  var cnt = document.getElementsByClassName("red-color");
+		  console.log(cnt);
+		cnt[0].className = cnt[0].className.replace(" red-color", "");
+		this.className += " red-color";
+		});
+	}
+</script>
+<script>
+	$(document).ready(function(){
+		var a = $("#idGia").val();
+		console.log(a);
+});
+	
+	//.html("Giá: String(${post.price}).replace(/(.)(?=(\d{3})+$)/g,'$1,') VND");
+</script>

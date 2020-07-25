@@ -1,0 +1,56 @@
+<% layout('layouts/boilerplate') -%>
+<header class="intro" style="height: auto;margin-top: 100px;">
+    <div style="height: 30px;width: 100%;background: #f1f4f6;">
+        <p style="margin-left: 13%;margin-bottom: 0;text-align: start;line-height: 30px;">
+            <a href="/" style="color: black;">South</a> > <a href="review-khu-vuc" style="color: black; font-weight: bold;">Review khu vuc</a>
+        </p>
+    </div>
+</header>
+<div class="content-center" style="width: 65%;margin:0 17.5%;">
+    <p style="text-align: center;font-size: 25px;font-weight: 600"> Review khu vực</p>
+    <div style="width: 100%;height: 220px;">
+            <% rekv.forEach(function(re){ %>
+                <div style="float:left;width: 33%;height: 100%;margin: 1px;position: relative;padding: 5px;">
+                <a href="review-khu-vuc/<%= re.slug %>">
+                    <img src="<%= re.url %>" alt="" width="100%" height="100%" style="border-radius:10px">
+                    <div style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);color: white;font-size: 25px;font-weight: bold;"><%= re.name %></div>
+                </a>
+                </div>
+            <% }); %>
+    </div>
+    <div style="padding-top: 10px;border-top: 1px solid #cdcdcd;>
+        <h3> Giới thiệu tính năng Review khu vực</h3>
+        <p style="font-size: 20px;">
+            Review khu vực là gì? Có thể bạn chưa nghe đến bao giờ. Nhưng hãy đọc vì chúng tôi biết nếu không là hiện tại,
+             thì tương lai tính năng này sẽ vô cùng hữu ích với bạn và gia đình bạn.
+        </p>
+        <p style="font-size: 20px;">
+            Hãy hình dung nếu bạn đang có nhu cầu thuê nhà, mua nhà mới và muốn khảo sát tình hình chung, tìm hiểu những tiện ích mà khu vực đó đang sở hữu để quyết định lựa chọn. Vậy lúc này bạn sẽ làm cách nào để khảo sát?
+        </p>
+        <i style="font-size: 18px;">
+            South ra mắt tính năng Review khu vực hay Đánh giá khu vực nhằm liệt kê, mô tả và vẽ nên một bức tranh về môi trường sống mà bạn đang quan tâm.
+        </i>
+        <p style="font-size: 20px;">
+            Bạn đang tìm nhà ở quận 5, nhưng không biết rõ khu vực này có những trường học, bệnh viện, trung tâm mua sắm, giải trí nào nổi bật? Đoạn video dưới đây sẽ mô phỏng sơ lược một ngày ở quận 5 để bạn có thể hình dung cuộc sống tương lai của mình và gia đình nếu lựa chọn đây là nơi an cư lập nghiệp.
+        </p>
+        <p style="font-size: 20px;">
+            Mỗi phường nổi bật, nằm trong khu dân cư thuận tiện sinh hoạt và làm việc, tọa lạc tại hai thành phố lớn là TPHCM và Hà Nội, đều được chúng tôi đánh giá và thống kê tiện ích một cách chi tiết. Bạn có thể xem, so sánh và hình dung môi trường sống tương lai của mình một cách chân thực hơn. Qua đó việc lựa chọn khu vực sống sẽ trở nên dễ dàng, đáp ứng đúng mong muốn sở hữu một cuộc sống tuyệt vời như ý.
+        </p>
+        <p style="font-size: 20px;">
+            Mỗi phường được liệt kê trong tính năng Review khu vực đều có mục tin đăng bất động sản và môi giới khu vực để bạn thuận tiện xem giá tham khảo, tìm môi giới uy tín.
+        </p>
+        <p style="font-size: 20px;">
+            Vì Mogi thấu hiểu bạn, hiểu rằng việc lựa chọn môi trường sống là một điều không dễ dàng. Để giúp bạn hài lòng nhất với lựa chọn của chính mình, chúng tôi tin rằng tính năng này sinh ra là để mang đến một cuộc sống viên mãn hơn cho bạn và gia đình bạn.
+        </p>
+        <p style="font-size: 20px;">
+            Mọi đóng góp và thắc mắc về tính năng Review khu vực, mời bạn liên hệ trực tiếp qua đường dây nóng hoặc hộp thư.
+        </p>
+        <p style="font-size: 20px;">
+            Hi vọng rằng bạn sẽ luôn đồng hành cùng South cũng như đón nhận sự đổi mới của chúng tôi để được phục vụ bạn và gia đình bạn tốt hơn mỗi ngày. Chân thành cảm ơn.
+        </p>
+
+    </div>
+</div>
+<div class="footer-end">
+			
+</div>

@@ -1,0 +1,88 @@
+<!-- <style>
+    ul  {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+    li  {
+        display: inline;
+        padding: 5px;
+    }
+</style>
+<ul id="navbar">
+    <li><a href="/">Trang chu</a></li>
+    
+    <% if(!currentUser) { %>
+        <li><a href="/posts">Bai viet</a></li>
+    <% } else { %>
+        <li><a href="/admin/listUser">user</a></li>
+        <li><a href="/admin/logoutAdmin">Thoat</a></li>
+        Welcome, <%= currentUser.username %>
+    <% } %>
+</ul> -->
+<!-- <nav>
+	<input type="checkbox" id="check">
+	<label for="check">
+		<i class="fas fa-bars" id="btn"></i>
+		<i class="fas fa-times" id="cancel"></i>
+	</label>
+	<a href="/">
+		<img src="/images/logo.png" alt="">
+	</a>
+	<ul>
+		<li><a href="/" class="active"><i class="fas fa-city"></i> Trang chủ</a></li>
+		<li><a href="/posts"><i class="fas fa-home"></i> Nhà ở ghép</a></li>
+		<li><a href="#"><i class="fas fa-dollar-sign"></i> Nhà nguyên căn</a></li>
+		<li><a href="#"><i class="fas fa-hand-holding-usd"></i> Chung cư</a></li>
+		<li><a href="#"><i class="fas fa-exchange-alt"></i> Môi giới</a></li>
+		<li><a href="#"><i class="fas fa-place-of-worship"></i> Dự án</a></li>
+		<% if(!currentUser) {%>
+			<li><a href="/login"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a></li>
+		<% }else { %>
+			<li><a href="#"><i class="far fa-heart"></i></a></li>
+			<li><a href="#"><i class="far fa-bell"></i></a></li>
+			<li><a href="/posts/new"><i class="fas fa-file-signature"></i> User</a></li>
+			<li><a href="/admin/logoutAdmin">Thoát</a></li>
+			Xin chào, <%= currentUser.username %>!
+		<% } %>	
+	</ul>
+</nav> -->
+<section>
+    <header>
+      <nav class="rad-navigation">
+        <div class="rad-logo-container">
+          <a href="#" class="rad-logo">South</a>
+          <a href="#" class="rad-toggle-btn pull-right"><i class="fa fa-bars"></i></a>
+        </div>
+        <div class="rad-top-nav-container">
+          <ul class="links">
+            <li class="rad-dropdown"><a href="" class="red-menu-item"><%= currentUser.username %></a></li>
+            <li><a href="/admin/logoutAdmin">Thoát</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+</section>
+<aside>
+    <nav class="rad-sidebar">
+      <ul>
+        <li>
+          <a href="/admin/landing" class="inbox">
+            <i class="fa fa-dashboard"><span class="icon-bg rad-bg-success"></span></i>
+            <span class="rad-sidebar-item">Thống kê</span>
+          </a>
+        </li>
+        <li>
+          <a href="/admin/category">
+            <i class="fa fa-bar-chart-o">
+                          <span class="icon-bg rad-bg-danger"></span>
+                      </i>
+            <span class="rad-sidebar-item">Quản lý loại phòng</span>
+          </a>
+        </li>
+        <li><a href="/admin/room" class="snooz"><i class="fa fa-line-chart"><span class="icon-bg rad-bg-primary"></span></i><span class="rad-sidebar-item">Quản lý phòng</span></a></li>
+        <li><a href="#" class="done"><i class="fa fa-area-chart"><span class="icon-bg rad-bg-warning"></span></i><span class="rad-sidebar-item">Quản lý khu vực</span></a></li>
+        <li><a href="/admin/user"><i class="fa fa-wrench"><span class="icon-bg rad-bg-violet"></span></i><span class="rad-sidebar-item">Quản lý người dùng</span></a></li>
+      </ul>
+    </nav>
+</aside>
